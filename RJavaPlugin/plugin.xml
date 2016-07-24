@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            label="Sample Action Set"
+            visible="true"
+            id="Temp.actionSet">
+         <menu
+               label="Sample &amp;Menu"
+               id="sampleMenu">
+            <separator
+                  name="sampleGroup">
+            </separator>
+         </menu>
+         <action
+               label="&amp;Sample Action"
+               icon="icons/sample.gif"
+               class="temp.actions.SampleAction"
+               tooltip="Hello, Eclipse world"
+               menubarPath="sampleMenu/sampleGroup"
+               toolbarPath="sampleGroup"
+               id="temp.actions.SampleAction">
+         </action>
+      </actionSet>
+   </extension>
+
+   <extension point="org.eclipse.debug.core.launchConfigurationTypes">
+	    <launchConfigurationType
+	        name="R"
+	        delegate="com.studytrails.RJavaPlugin.RJavaLaunchConfigurationDelegate"
+	        modes="run, debug"               
+	        id="org.eclipse.jdt.launching.RJava"
+	        sourceLocatorId="org.eclipse.jdt.launching.sourceLocator.JavaSourceLookupDirector"
+			sourcePathComputerId="org.eclipse.jdt.launching.sourceLookup.javaSourcePathComputer">        
+	    </launchConfigurationType>
+	</extension>
+
+	<extension point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+	    <launchConfigurationTabGroup
+	        type="org.eclipse.jdt.launching.RJava"
+	        class="com.studytrails.RJavaPlugin.RJavaAppletTabGroup"
+	        id="org.eclipse.jdt.debug.ui.launchConfigurationTabGroup.RJava">
+	    </launchConfigurationTabGroup>
+	</extension>
+	
+	<extension point="org.eclipse.debug.ui.launchConfigurationTypeImages">
+	    <launchConfigurationTypeImage
+	        icon="icons/r-icon.gif"
+	        configTypeID="org.eclipse.jdt.launching.RJava"
+	        id="org.eclipse.jdt.debug.ui.launchConfigurationTypeImage.RJava">
+	    </launchConfigurationTypeImage>
+	</extension>
+
+	<extension point="org.eclipse.debug.ui.launchShortcuts">
+    <shortcut
+        id="org.eclipse.jdt.debug.ui.RJavaShortcut"
+        class="com.studytrails.RJavaPlugin.RJavaLaunchShortcut"
+        label="RJava"
+        icon="icons/r-icon.png"
+        modes="run, debug">
+        <!--
+            <perspective id="org.eclipse.jdt.ui.JavaPerspective"/>
+            <perspective id="org.eclipse.jdt.ui.JavaHierarchyPerspective"/>
+            <perspective id="org.eclipse.jdt.ui.JavaBrowsingPerspective"/>
+            <perspective id="org.eclipse.debug.ui.DebugPerspective"/>
+        -->
+    </shortcut>
+	</extension>
+	
+	<extension
+       id="r.RJavaPreferencePage"
+       name="RJava Preference Page"
+       point="org.eclipse.ui.preferencePages">
+    <page
+          class="com.studytrails.RJavaPlugin.RJavaPreferencePage"
+          id="RJavaPlugin.RJavaPreferecePage"
+          name="RJava ">
+    </page>
+	</extension>
+ <extension
+       point="org.eclipse.ui.newWizards">
+    <category
+          id="RJavaPlugin"
+          name="New RJava Project">
+    </category>
+    <wizard
+          category="RJavaPlugin"
+          class="rjavaplugin.wizards.NewRJavaProject"
+          icon="icons/sample.gif"
+          id="rjavaplugin.wizards.NewRJavaProject"
+          name="Multi-page Editor file">
+    </wizard>
+ </extension>
+
+</plugin>
